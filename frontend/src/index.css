@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Responsive / mobile overrides ── */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; -webkit-font-smoothing: antialiased; }
+
+/* Prevent jittery resizing when cursor crosses iframes/canvas */
+body.cdsco-resizing {
+  user-select: none;
+}
+body.cdsco-resizing * {
+  user-select: none !important;
+  cursor: col-resize !important;
+}
+body.cdsco-resizing iframe {
+  pointer-events: none !important;
+}
+
+/* Ensure 100dvh works as a fallback */
+:root { --app-height: 100vh; }
+
+/* Thin scrollbar for webkit */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d0cec8; border-radius: 4px; }
+
+/* Touch target minimum sizes */
+@media (max-width: 767px) {
+  button { min-height: 32px; }
+  input, select, textarea { font-size: 16px !important; } /* prevent iOS zoom */
+}
+
+/* docx-preview host tweaks (library ships most styles) */
+.docx-preview-host .docx-wrapper { background: #fff; }
+.docx-preview-host { font-size: 14px; }
